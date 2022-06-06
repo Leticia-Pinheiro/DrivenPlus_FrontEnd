@@ -98,14 +98,14 @@ export default function TelaPlano(){
 
             <Cartao>
                 <CaixaDeTexto name="cardName" type="text" placeholder="Nome impresso no cartão" value = {cartao.cardName} onChange={MudancaDoInput} required  />
-                <CaixaDeTexto name="cardNumber" type="text"  placeholder="Dígitos do cartão" value = {cartao.cardNumber} onChange={MudancaDoInput} required  />           
-                <CaixaDeTextoMenor name="securityNumber" type="text" placeholder="Código de Segurança" value = {cartao.securityNumber} onChange={MudancaDoInput} required  />
-                <CaixaDeTextoMenor name="expirationDate" type="text" placeholder="Validade" value = {cartao.expirationDate} onChange={MudancaDoInput} required />
+                <CaixaDeTexto name="cardNumber" type="number"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="Dígitos do cartão" value = {cartao.cardNumber} onChange={MudancaDoInput} required  />           
+                <CaixaDeTextoMenor name="securityNumber" type="number" pattern="[0-9]{3}" placeholder="Código de Segurança" value = {cartao.securityNumber} onChange={MudancaDoInput} required  />
+                <CaixaDeTextoMenor name="expirationDate" type="number" pattern="[0-9]{2} / [0-9]{2}" placeholder="Validade" value = {cartao.expirationDate} onChange={MudancaDoInput} required />
             </Cartao>
 
             <Assinar onClick = {Confirmacao}>ASSINAR</Assinar>
 
-            <Modal isOpen = {escondido} >
+            <Modal isOpen = {escondido} overlayClassName= "modal-overlay" >
                 <TelaConfirmacao setEscondido={setEscondido} cartao={cartao} plano={plano}/>
             </Modal>
 
