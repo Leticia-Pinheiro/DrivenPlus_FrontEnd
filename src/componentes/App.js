@@ -2,7 +2,7 @@ import  {  BrowserRouter ,  Routes ,  Route  }  from  'react-router-dom' ;
 import  {  useState  }  from  'react' ;
 
 import  "./assets/reset.css"
-// import  "../assets/style.css"
+import  "./assets/style.css"
 
 import TelaLogin from './TelaLogin'
 import TelaCadastro from './TelaCadastro'
@@ -13,15 +13,16 @@ import UserContext from './contexts/UserContext';
 
 export default function App(){
     const [dados, setDados]= useState({})
+    const [planoAssinado, setPlanoAssinado] = useState({}) 
 
     return(
-        <UserContext.Provider value = {{dados, setDados}}>
+        <UserContext.Provider value = {{dados, setDados, planoAssinado, setPlanoAssinado}}>
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<TelaLogin />} />
             <Route path="/signup" element={<TelaCadastro />} />
             <Route path="/subscriptions" element={<TelaPlanos />} />
-            <Route path="/plano" element={<TelaPlano />} />
+            <Route path="/subscriptions/:idPlano" element={<TelaPlano />} />
             <Route path="/home" element={<TelaHome />} />
         </Routes>
     </BrowserRouter>
